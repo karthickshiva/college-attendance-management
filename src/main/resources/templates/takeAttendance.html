@@ -1,0 +1,60 @@
+
+<section th:fragment="content" xmlns:th="http://www.thymeleaf.org"
+	class="section">
+	<div class="container">
+		<h1 class="is-size-2 pb-3">Take Attendance</h1>
+		<form method="post" th:action="@{/attendance/add}">
+			<div class="columns">
+				<div class="field column">
+					<label class="label">Class</label>
+					<div class="select fullwidth">
+						<select name="classID" onchange="'refreshStudents(this.value,' + '@{/attendance/add}' + ')'" class="fullwidth">
+							<option th:each="classroom, stats : ${classrooms}"
+								th:text="${classroom.name}" th:value="${classroom.id}"
+								th:selected="${classroom.id == classID}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="field column">
+					<label class="label">Subject</label>
+					<div class="select fullwidth">
+						<select class="fullwidth" name="subjectID">
+							<option th:each="subject, stats : ${subjects}"
+								th:text="${subject.name}" th:value="${subject.id}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="field column">
+					<label class="label">Period</label>
+					<div class="control">
+						<input class="input" type="number" name="period" value=1>
+					</div>
+				</div>
+				<div class="field column">
+					<label class="label">Date</label>
+					<div class="control">
+						<input class="input" type="date" name="date">
+					</div>
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column is-one-fifth"
+					th:each="student, stats : ${students}">
+					<label class="checkbox"> <input type="checkbox"
+						th:text="${student.name}" class="mr-2" name="studentIDs" th:value="${student.id}"/>
+
+					</label>
+				</div>
+			</div>
+
+			<div class="field is-grouped">
+				<div class="control">
+					<button class="button is-link" type="submit">Submit</button>
+				</div>
+				<div class="control">
+					<button class="button is-link is-light" type="reset">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>

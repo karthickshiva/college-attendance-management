@@ -1,0 +1,59 @@
+
+<header>
+<nav class="navbar" role="navigation" aria-label="main navigation" th:fragment="nav" xmlns:th="http://www.thymeleaf.org">
+	<div class="navbar-brand">
+		<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navmenu" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	</div>
+	<div id="navmenu" class="navbar-menu">
+		<div class="navbar-start">
+			<a class="navbar-item" href="/">
+			Home
+			</a>
+			<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-link">
+				Staff Operations
+				</a>
+				<div class="navbar-dropdown">
+					<a class="navbar-item" th:href="@{/attendance}">
+					Take Attendance
+					</a>
+					<a class="navbar-item">
+					Attendance Report
+					</a>
+				</div>
+				
+			</div>
+			<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-link">
+				Admin Operations
+				</a>
+				<div class="navbar-dropdown">
+					<a class="navbar-item"  th:href="@{/student/add}">
+					Add Student
+					</a>
+					<a class="navbar-item" th:href="@{/class/add}">
+					Add Class
+					</a>
+					<a class="navbar-item" th:href="@{/subject/add}">
+					Add Subject
+					</a>
+					<hr class="navbar-divider">
+					<a class="navbar-item" th:href="@{/student/view}">
+					View Students
+					</a>
+					<a class="navbar-item" th:href="@{/class/view}">
+					View Classes
+					</a>
+					<a class="navbar-item" th:href="@{/subject/view}">
+					View Subjects
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+</header>

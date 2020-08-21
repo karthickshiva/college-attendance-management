@@ -1,0 +1,40 @@
+
+<section th:fragment="content" xmlns:th="http://www.thymeleaf.org"
+	class="section">
+	<div class="container">
+		<h1 class="is-size-2 pb-3">Add Student</h1>
+		<form th:action="@{/student/add}" method="post">
+			<div class="field">
+				<label class="label">Student Roll Number</label>
+				<div class="control">
+					<input class="input" type="text" name="rollNumber">
+				</div>
+			</div>
+			<div class="field">
+				<label class="label">Student Name</label>
+				<div class="control">
+					<input class="input" type="text" name="name">
+				</div>
+			</div>
+			<div class="field pb-3">
+				<label class="label">Class</label>
+				<div class="control">
+					<div class="select">
+						<select name="classID">
+							<option th:each="classroom, stats : ${classrooms}"
+								th:text="${classroom.name}" th:value="${classroom.id}"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="field is-grouped">
+				<div class="control">
+					<button class="button is-link">Submit</button>
+				</div>
+				<div class="control">
+					<button class="button is-link is-light">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>

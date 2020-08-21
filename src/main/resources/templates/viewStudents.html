@@ -1,0 +1,37 @@
+<section th:fragment="content" xmlns:th="http://www.thymeleaf.org"
+	class="section">
+	<div class="container">
+		<h1 class="is-size-2 pb-3">Subjects</h1>
+		<form method="post">
+			<div class="field pb-5">
+				<label class="label">Class</label>
+				<div class="select fullwidth">
+					<select name="classID" onchange="refreshStudents(this.value, this.getAttribute('data-refresh-url'))"
+						class="fullwidth" th:data-refresh-url = "@{/student/view}">
+						<option th:each="classroom, stats : ${classrooms}"
+							th:text="${classroom.name}" th:value="${classroom.id}"
+							th:selected="${classroom.id == classID}"></option>
+					</select>
+				</div>
+			</div>
+		</form>
+		<table class="table is-fullwidth is-striped">
+			<thead>
+				<tr>
+					<th>S.No</th>
+					<th>Roll Number</th>
+					<th>Name</th>
+					<th>Class</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student, stat : ${students}">
+					<td th:text="${stat.count}"></td>
+					<td th:text="${student.rollNumber}"></td>
+					<td th:text="${student.name}"></td>
+					<td th:text="${student.studentClass.name}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
